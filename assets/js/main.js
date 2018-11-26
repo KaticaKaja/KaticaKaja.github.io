@@ -1,6 +1,4 @@
 window.onload = function() {
-    // var basePath = window.location;
-    // console.log(basePath);
     document.getElementById("bars").addEventListener("click", function(){
         document.getElementById("overlay").classList.toggle("h-100");
         document.getElementById("bars").classList.toggle( "fa-times");

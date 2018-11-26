@@ -21,10 +21,9 @@ window.onload = function() {
     function renderNavigation() {
         var getUrl = location.pathname;
         var pathHolder = getUrl.split("/");
-        console.log(pathHolder[pathHolder.length-1]);
         var html="";
         html+="<ul>";
-        if(pathHolder[6] == "index.html"){
+        if(pathHolder[pathHolder.length-1] == "index.html"){
         for(index in menuLinks){ 
             html+="<li><a href='"+menuLinks[index].path+"'>"+menuLinks[index].name+"</a></li>";
         }}

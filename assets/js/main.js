@@ -1,4 +1,8 @@
 window.onload = function() {
+    var getUrl = location.pathname;
+    var pathHolder = getUrl.split("/");
+    renderNavigation();
+
     document.getElementById("bars").addEventListener("click", function(){
         document.getElementById("overlay").classList.toggle("h-100");
         document.getElementById("bars").classList.toggle( "fa-times");
@@ -17,10 +21,9 @@ window.onload = function() {
     var menuLinksP=[{name: "Home", path: "../../index.html"}, {name: "Reviews", path: "reviews.html"}, {name: "About Us", path: "aboutus.html"},{name: "About Me", path: "aboutme.html"}];
 
     
-    renderNavigation();
+
     function renderNavigation() {
-        var getUrl = location.pathname;
-        var pathHolder = getUrl.split("/");
+        
         var html="";
         html+="<ul>";
         if(pathHolder[pathHolder.length-1] == "index.html"){

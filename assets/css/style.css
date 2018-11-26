@@ -68,5 +68,5 @@ textarea:focus, input:focus{
     border-bottom: 1px solid #fff;
     transition: all 0.5s;
     background-color: transparent;
-    color: #fff;
+    color: red;
 }

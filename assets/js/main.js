@@ -16,16 +16,17 @@ window.onload = function() {
     });
 
     var menuLinks=[{name: "Home", path: "index.html"}, {name: "Reviews", path: "assets/pages/reviews.html"}, {name: "About Us", path: "assets/pages/aboutus.html"},{name: "About Me", path: "assets/pages/aboutme.html"}];
-    var menuLinksP=[{name: "Home", path: "./index.html"}, {name: "Reviews", path: "reviews.html"}, {name: "About Us", path: "aboutus.html"},{name: "About Me", path: "aboutme.html"}];
+    var menuLinksP=[{name: "Home", path: "../../index.html"}, {name: "Reviews", path: "reviews.html"}, {name: "About Us", path: "aboutus.html"},{name: "About Me", path: "aboutme.html"}];
 
     
     renderNavigation();
     function renderNavigation() {
         var getUrl = location.pathname;
-        console.log(getUrl);
+        var pathHolder = getUrl.split("/");
+        console.log(pathHolder[pathHolder.length-1]);
         var html="";
         html+="<ul>";
-        if(getUrl = "index.html"){
+        if(pathHolder[6] == "index.html"){
         for(index in menuLinks){ 
             html+="<li><a href='"+menuLinks[index].path+"'>"+menuLinks[index].name+"</a></li>";
         }}

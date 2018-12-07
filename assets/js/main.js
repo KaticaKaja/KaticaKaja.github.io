@@ -31,9 +31,10 @@ window.onload = function() {
         
         var html="";
         html+="<ul id='navList' class='w-100'>";
-        if(pathHolder[pathHolder.length-1] == "index.html" || pathHolder[pathHolder.length-1] == "/katicakaja.github.io"){
+        if(pathHolder[pathHolder.length-1] == "index.html" || pathHolder[pathHolder.length-1] == ""){
             for(index in menuLinks){ 
                 html+="<li><a href='"+menuLinks[index].path+"'>"+menuLinks[index].name+"</a></li>";
+                console.log(menuLinks[index].path);
             }}
         else{
             for(index in menuLinksP){

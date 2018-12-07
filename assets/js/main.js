@@ -1,4 +1,5 @@
 window.onload = function() {
+//smoothscroll plugin    
     $('#arrow a').offsetScroller({offsetPixels: 118,animationSpeed: 100
     });
 
@@ -20,11 +21,11 @@ window.onload = function() {
 //NAVIGATION LINKS
     var menuLinks=[{name: "Home", path: "index.html"}, {name: "About Us", path: "assets/pages/aboutus.html"},{name: "About Me", path: "assets/pages/aboutme.html"}];
     var menuLinksP=[{name: "Home", path: "../../index.html"}, {name: "About Us", path: "aboutus.html"},{name: "About Me", path: "aboutme.html"}];
-
+    var getUrl = location.pathname;
+    var pathHolder = getUrl.split("/");
     renderNavigation();
     function renderNavigation() {
-        var getUrl = location.pathname;
-        var pathHolder = getUrl.split("/");
+        
         var html="";
         html+="<ul id='navList' class='w-100'>";
         if(pathHolder[pathHolder.length-1] == "index.html"){
@@ -41,12 +42,15 @@ window.onload = function() {
     }
 
 //SLIDESHOW
+
     var imageArray=["assets/img/family_cars.jpg","assets/img/student_cars.jpg","assets/img/sport_cars.jpg","assets/img/porsche.jpg","assets/img/champagneAudi.gif"];
     var stepSlide=0;
     function slide(){
         document.getElementById("banner").style.backgroundImage='url('+imageArray[stepSlide++%imageArray.length]+')';
     }
-    setInterval(slide, 3000);
+    if(pathHolder[pathHolder.length-1] == "index.html"){
+        setInterval(slide, 4000);
+    }
 
 // SEARCH
 	document.getElementById('inputSearch').addEventListener("keyup", function(event) { //mozda cu ipak brisati, jer ima neke nuspojave!!
@@ -62,23 +66,19 @@ window.onload = function() {
     $("#bars").click(function(){
         $("#overlay").toggleClass("h-100");
         $("#bars").toggleClass("fa-times");
-        // if($("#overlay").hasClass("h-100")){
-        //     $('#navList').slideUp('slow'); ZASTO NE RADI
-        // }
        
     });
 
 //SWIPER
-    swiper();
-    function swiper(){
-        
-
         var swiperImg=[{path: 'assets/img/truck.png', alt: 'Toyota Tacoma'},
             {path:'assets/img/suv.png', alt: 'Honda CR-V'},{path:'assets/img/sedan.png', alt: 'Toyota Camry'},
             {path:'assets/img/coupe.png', alt: 'Mercedes Benz S-class'},{path:'assets/img/hatchback.png', alt: 'Volkswagen GTI'},
             {path:'assets/img/van.png', alt: 'Chrysler Pacifica'},{path:'assets/img/convertible.png', alt: 'Audi A3 Convertible'},
             {path:'assets/img/wagon.png', alt: 'Subaru Outback'}
         ];
+    swiper();
+    function swiper(){
+    
         var swiperContent=[{image:'assets/img/toyotaTacoma.jpg',
             title: 'Toyota Tacoma', 
             content: 'The 2019 Toyota Tacoma is an exceptional off-roader.'
@@ -211,17 +211,87 @@ window.onload = function() {
     $('#contactForm').click(function(){
         if($('#envel').hasClass('fa-times')){
             $('#overlayContact').css({'width':'0%','height':'0%'});
+            $('#form1').fadeOut('slow');
             $('#envel').toggleClass('fa-times');
         }
         else{
             $('#overlayContact').css({'width':'100%','height':'100%'});
+            $('#form1').fadeIn('slow');
             $('#envel').toggleClass('fa-times');
+            
         }
         
     });
 
+    var selectHtml='<select class="p-2 w-100"><option value="0">Choose your favourite car from our list</option>';
 
-
+    for(var l=1; l<swiperImg.length; l++){
+        selectHtml+='<option value="'+l+'">'+swiperImg[l].alt+'</option>';
+    }
+        selectHtml+='</select>';
+        document.getElementById("selectOption").innerHTML=selectHtml;
+    var checker=0;
+    var formInformationArray=[];
+    document.getElementById("firstName").addEventListener("blur", function(){
+        var fName = document.getElementById('firstName').value.trim();
+        var rfName = /^[A-Z][a-z]{1,14}((\-|\s)[A-Z][a-z]{1,14})?$/;
+        if(!rfName.test(fName)){
+            
+            document.querySelector("#firstName").style.border='1px solid #ff0000';
+        }
+        else{
+            formInformationArray.push();
+            document.querySelector("#firstName").style.border='none';
+            checker=1;
+        }
+    });
+    document.getElementById("lastName").addEventListener("blur", function(){
+        var lName = document.getElementById('lastName').value.trim();
+        var rlName = /^[A-Z][a-z]{1,20}$/;
+        if(!rlName.test(lName)){
+            
+            document.querySelector("#lastName").style.border='1px solid #ff0000';
+        }
+        else{
+            formInformationArray.push();
+            document.querySelector("#lastName").style.border='none';
+            checker=1;
+        }
+    });
+    document.getElementById("email").addEventListener("blur", function(){
+        var email = document.getElementById('email').value.trim();
+        var rEmail = /^[a-z\d\_\-\.]{2,}@[a-z]{2,10}(\.[a-z]{2,5})+$/;
+        if(!rEmail.test(email)){
+            
+            document.querySelector("#email").style.border='1px solid #ff0000';
+        }
+        else{
+            formInformationArray.push();
+            document.querySelector("#email").style.border='none';
+            checker=1;
+        }
+    });
+    document.getElementById("comment").addEventListener("blur", function(){
+        var comment = document.getElementById('comment').value.trim();
+        var rComment = /^[\w\s\.\,\-\!\?\#\%\$\:\;]{20,}$/;
+        if(!rComment.test(comment)){
+            
+            document.querySelector("#comment").style.border='1px solid #ff0000';
+        }
+        else{
+            formInformationArray.push();
+            document.querySelector("#comment").style.border='none';
+            checker=1;
+        }
+    });
+    document.querySelector("#send").addEventListener("click",function(){
+        if(checker==0){
+            document.querySelector("#comment").style.border='1px solid #ff0000';
+            document.querySelector("#email").style.border='1px solid #ff0000';
+            document.querySelector("#firstName").style.border='1px solid #ff0000';
+            document.querySelector("#lastName").style.border='1px solid #ff0000';
+        }
+    });
 
 
 

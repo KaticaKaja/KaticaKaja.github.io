@@ -70,40 +70,35 @@
             
         </div>
         <div id="contactForm" class="p-2 text-center m-5"><span id="envel" class="fas fa-envelope"></span></div>
-        <div id="overlayContact">
-            <!-- <form method="POST" action="#" name="form1">
-                <input name="firstName" id="firstName" type="text"/>
-                <input name="firstName" id="firstName" type="text"/>
-                <input name="email" id="email" type="text"/>
-                 <select>
-                    <option value="0">Choose your favourite from our list</option>
-                    <option value="1">Toyota Tacoma</option>
-                    <option value="2">Honda CV-R</option>
-                    <option value="4">Toyota Camry</option>
-                    <option value="5">Toyota Camry</option>
-                    <option value="6">Toyota Camry</option>     PREBACI U JS!!!! IMAS VEC ARRAY
-                    <option value="7">Toyota Camry</option>
-                    <option value="8">Toyota Camry</option>
-                </select> 
-                <textarea></textarea>
-            </form> -->
+        <div id="overlayContact" class="d-flex flex-column align-items-center justify-content-center">
+            <form id="form1" method="POST" action="#" name="form1">
+                <div class="d-flex">
+                    <input name="firstName" id="firstName" class="p-2 w-50" type="text" placeholder="First name *"/>
+                    <input name="lastName" id="lastName" class="p-2 w-50" type="text" placeholder="Last name *"/>
+                </div>
+                <input name="email" id="email" class=" p-2 w-100" type="text" placeholder="E-mail *"/>
+                <div id="selectOption" class="w-100">
+
+                </div>
+                <textarea rows="5" id="comment" class="p-2 w-100" placeholder="Your thoughts and ideas on how to improve our reviews *"></textarea>
+                <input id="send" class="p-2 w-100" name="submit" type="button" value="Submit"/>
+            </form>
         </div>
     </div>
     <footer class="mt-5">
         <div class="container">
                 <div class="row">
-            
-                        <div class="icons col-md-6">
-                            <a href="https://www.twitter.com" target="_blank"><span class="fab fa-twitter-square"></span></a>
-                            <a href="https://www.instagram.com" target="_blank"><span class="fab fa-instagram"></span></a>
-                            <a href="https://www.facebook.com" target="_blank"><span class="fab fa-facebook-square"></span></a>
-                        </div>
-                        <div class="col-md-6 text-right">
-                            <p class="mt-1 mb-0">email: infinitemagazine&#64;gmail&#46;com</p>
-                            <p class="mt-1">phone: 202-555-0193</p>
-                        </div>
+                    <div class="icons col-md-6">
+                        <a href="https://www.twitter.com" target="_blank"><span class="fab fa-twitter-square"></span></a>
+                        <a href="https://www.instagram.com" target="_blank"><span class="fab fa-instagram"></span></a>
+                        <a href="https://www.facebook.com" target="_blank"><span class="fab fa-facebook-square"></span></a>
                     </div>
-                    <p class="text-center mb-0">copyright &copy; Infinite Magazine 2018</p>
+                    <div class="col-md-6 text-right">
+                        <p class="mt-1 mb-0"><span class="fas fa-at"></span> infinitemagazine&#64;gmail&#46;com</p>
+                        <p class="mt-1"><span class="fas fa-phone-square"></span> 202-555-0193</p>
+                    </div>
+                </div>
+                <p class="text-center mb-0">copyright &copy; Infinite Magazine 2018</p>
         </div>
         
     </footer>

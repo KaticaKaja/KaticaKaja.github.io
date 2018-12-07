@@ -179,9 +179,10 @@ li{
     position: fixed;
     bottom: 0;
     right: 0;
-    background-color:  rgba(0, 0, 0, 0.85);
+    background-color:  rgba(0, 0, 0, 0.90);
     z-index: 120;
     transition: all 1s;
+    overflow: hidden;
 }
 .icons a{
     font-size: 35px;
@@ -196,4 +197,49 @@ footer{
     box-shadow: 0px -2px 10px 0px #888;
 
 }
-  
+#form1{
+    width: 50%;
+}
+textarea{
+    resize: none!important;
+    margin-top:2px!important;
+}
+#firstName{
+    margin-right: 2px;
+}
+#firstName, #lastName, #email, textarea, select{
+    background-color: rgba(110, 110, 110, 0.8);
+    border: none;
+
+}
+#email,#firstName,#lastName{
+    margin-bottom: 2px;
+}
+::placeholder, select{
+    color:rgba(255,255,255,0.5); 
+}
+select{
+    outline: none;
+}
+#send{
+    background-color: rgba(11, 86, 165,0.8);
+    border: none;
+    color:rgba(255,255,255,0.7);
+    cursor: pointer;
+}
+#send:hover{
+    background-color: rgba(11, 86, 165, 0.95);
+}
+input,textarea{
+    color:#fff;
+}
+#aboutus{
+   height: 100vh;
+   margin-top:85px;
+}
+#aboutus h1{
+    color: #0B56A5;
+}
+#aboutus p{
+    color:rgb(100, 100, 100);
+}

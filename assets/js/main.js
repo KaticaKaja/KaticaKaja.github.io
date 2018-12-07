@@ -25,6 +25,7 @@ window.onload = function() {
     {name: "About Us", path: "aboutus.html"},{name: "About Me", path: "aboutme.html"}];
     var getUrl = location.pathname;
     var pathHolder = getUrl.split("/");
+    console.log(pathHolder);
     renderNavigation();
     function renderNavigation() {
         

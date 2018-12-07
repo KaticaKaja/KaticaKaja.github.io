@@ -53,7 +53,7 @@ window.onload = function() {
     }
 
 // SEARCH
-	document.getElementById('inputSearch').addEventListener("keyup", function(event) { //mozda cu ipak brisati, jer ima neke nuspojave!!
+	document.getElementById('inputSearch').addEventListener("keyup", function(event) {
 		event.preventDefault();
 		if (event.keyCode === 13 ) {
         window.find(document.getElementById('inputSearch').value);
@@ -222,78 +222,85 @@ window.onload = function() {
         }
         
     });
+    if(pathHolder[pathHolder.length-1] == "index.html"){
+        var selectHtml='<select class="p-2 w-100"><option value="0">Choose your favourite car from our list</option>';
 
-    var selectHtml='<select class="p-2 w-100"><option value="0">Choose your favourite car from our list</option>';
-
-    for(var l=1; l<swiperImg.length; l++){
-        selectHtml+='<option value="'+l+'">'+swiperImg[l].alt+'</option>';
+        for(var l=1; l<swiperImg.length; l++){
+            selectHtml+='<option value="'+l+'">'+swiperImg[l].alt+'</option>';
+        }
+            selectHtml+='</select>';
+            document.getElementById("selectOption").innerHTML=selectHtml;
+        var checker=0;
+        var formInformationArray=[];
+        document.getElementById("firstName").addEventListener("blur", function(){
+            var fName = document.getElementById('firstName').value.trim();
+            var rfName = /^[A-Z][a-z]{1,14}((\-|\s)[A-Z][a-z]{1,14})?$/;
+            if(!rfName.test(fName)){
+                
+                document.querySelector("#firstName").style.border='1px solid #ff0000';
+            }
+            else{
+                formInformationArray.push();
+                document.querySelector("#firstName").style.border='none';
+                checker=1;
+            }
+        });
+        document.getElementById("lastName").addEventListener("blur", function(){
+            var lName = document.getElementById('lastName').value.trim();
+            var rlName = /^[A-Z][a-z]{1,20}$/;
+            if(!rlName.test(lName)){
+                
+                document.querySelector("#lastName").style.border='1px solid #ff0000';
+            }
+            else{
+                formInformationArray.push();
+                document.querySelector("#lastName").style.border='none';
+                checker=1;
+            }
+        });
+        document.getElementById("email").addEventListener("blur", function(){
+            var email = document.getElementById('email').value.trim();
+            var rEmail = /^[a-z\d\_\-\.]{2,}@[a-z]{2,10}(\.[a-z]{2,5})+$/;
+            if(!rEmail.test(email)){
+                
+                document.querySelector("#email").style.border='1px solid #ff0000';
+            }
+            else{
+                formInformationArray.push();
+                document.querySelector("#email").style.border='none';
+                checker=1;
+            }
+        });
+        document.getElementById("comment").addEventListener("blur", function(){
+            var comment = document.getElementById('comment').value.trim();
+            var rComment = /^[\w\s\.\,\-\!\?\#\%\$\:\;]{20,}$/;
+            if(!rComment.test(comment)){
+                
+                document.querySelector("#comment").style.border='1px solid #ff0000';
+            }
+            else{
+                formInformationArray.push();
+                document.querySelector("#comment").style.border='none';
+                checker=1;
+            }
+        });
+        document.querySelector("#send").addEventListener("click",function(){
+            if(checker==0){
+                document.querySelector("#comment").style.border='1px solid #ff0000';
+                document.querySelector("#email").style.border='1px solid #ff0000';
+                document.querySelector("#firstName").style.border='1px solid #ff0000';
+                document.querySelector("#lastName").style.border='1px solid #ff0000';
+            }
+        });
     }
-        selectHtml+='</select>';
-        document.getElementById("selectOption").innerHTML=selectHtml;
-    var checker=0;
-    var formInformationArray=[];
-    document.getElementById("firstName").addEventListener("blur", function(){
-        var fName = document.getElementById('firstName').value.trim();
-        var rfName = /^[A-Z][a-z]{1,14}((\-|\s)[A-Z][a-z]{1,14})?$/;
-        if(!rfName.test(fName)){
-            
-            document.querySelector("#firstName").style.border='1px solid #ff0000';
+    if(pathHolder[pathHolder.length-1] == "aboutme.html"){
+        var technologies=[{src:'../img/html.png', alt:'html logo'},{src:'../img/css.png', alt:'css logo'},
+        {src:'../img/js.jpg', alt:'vanilla js logo'},{src:'../img/jquery.png', alt:'jquery logo'},{src:'../img/bootstrap.png', alt:'bootstrap logo'}];
+        var technologiesHtml='';
+        for(var w=0; w<technologies.length;w++){
+            technologiesHtml+='<img class="mr-4 mt-4" src='+technologies[w].src+' alt='+technologies[w].alt+'/>'
         }
-        else{
-            formInformationArray.push();
-            document.querySelector("#firstName").style.border='none';
-            checker=1;
-        }
-    });
-    document.getElementById("lastName").addEventListener("blur", function(){
-        var lName = document.getElementById('lastName').value.trim();
-        var rlName = /^[A-Z][a-z]{1,20}$/;
-        if(!rlName.test(lName)){
-            
-            document.querySelector("#lastName").style.border='1px solid #ff0000';
-        }
-        else{
-            formInformationArray.push();
-            document.querySelector("#lastName").style.border='none';
-            checker=1;
-        }
-    });
-    document.getElementById("email").addEventListener("blur", function(){
-        var email = document.getElementById('email').value.trim();
-        var rEmail = /^[a-z\d\_\-\.]{2,}@[a-z]{2,10}(\.[a-z]{2,5})+$/;
-        if(!rEmail.test(email)){
-            
-            document.querySelector("#email").style.border='1px solid #ff0000';
-        }
-        else{
-            formInformationArray.push();
-            document.querySelector("#email").style.border='none';
-            checker=1;
-        }
-    });
-    document.getElementById("comment").addEventListener("blur", function(){
-        var comment = document.getElementById('comment').value.trim();
-        var rComment = /^[\w\s\.\,\-\!\?\#\%\$\:\;]{20,}$/;
-        if(!rComment.test(comment)){
-            
-            document.querySelector("#comment").style.border='1px solid #ff0000';
-        }
-        else{
-            formInformationArray.push();
-            document.querySelector("#comment").style.border='none';
-            checker=1;
-        }
-    });
-    document.querySelector("#send").addEventListener("click",function(){
-        if(checker==0){
-            document.querySelector("#comment").style.border='1px solid #ff0000';
-            document.querySelector("#email").style.border='1px solid #ff0000';
-            document.querySelector("#firstName").style.border='1px solid #ff0000';
-            document.querySelector("#lastName").style.border='1px solid #ff0000';
-        }
-    });
-
-
-
+        document.querySelector("#technologies").innerHTML=technologiesHtml;
+    }
 
 }

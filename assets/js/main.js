@@ -225,7 +225,7 @@ window.onload = function() {
         }
         
     });
-    if(pathHolder[pathHolder.length-1] == "index.html"){
+    if(pathHolder[pathHolder.length-1] == "index.html" || pathHolder[pathHolder.length-1] == ""){
         var selectHtml='<select class="p-2 w-100"><option value="0">Choose your favourite car from our list</option>';
 
         for(var l=1; l<swiperImg.length; l++){

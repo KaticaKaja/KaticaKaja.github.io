@@ -51,7 +51,7 @@ window.onload = function() {
     function slide(){
         document.getElementById("banner").style.backgroundImage='url('+imageArray[stepSlide++%imageArray.length]+')';
     }
-    if(pathHolder[pathHolder.length-1] == "" || pathHolder[pathHolder.length-1]="index.html"){
+    if(pathHolder[pathHolder.length-1] == "" || pathHolder[pathHolder.length-1]=="index.html"){
         setInterval(slide, 4000);
     }
 
